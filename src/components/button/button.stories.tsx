@@ -7,9 +7,9 @@ type Story = StoryObj<typeof Button>;
 
 // Contains metadata about this component’s stories
 const meta: Meta<typeof Button> = {
-  title: 'Button',
+  title: 'Components/Button',
   component: Button,
-  tags: ['autodocs'], // Storybook auto generates documentation for this component
+  // tags: ['autodocs'], // Storybook auto generates documentation for this component; OR use button.mdx
   args: {
     children: 'Button', // Default value for the children prop, applies to all stories
     disabled: false, // Default value for the disabled prop below
@@ -18,16 +18,45 @@ const meta: Meta<typeof Button> = {
     // onClick: fn(), // when we pass onClick, it will be a function that can be used in the storybook to test the button click
   },
   argTypes: {
-    disabled: {
-      // adds disabled as control in Storybook
-      control: 'boolean',
-      description: 'Disables the button',
+    children: {
+      name: 'Label',
+      control: 'select',
+      description: 'Text to display on the button',
+      options: ['Button', 'Secondary', 'Destructive'],
+      // table: {
+      //   disable: true,
+      // },
     },
     variant: {
+      name: 'Variant',
+      description: 'Variant of the button',
       control: 'select',
+      table: {
+        defaultValue: {
+          summary: 'primary',
+        },
+      },
     },
     size: {
+      name: 'Size',
       control: 'select',
+      description: 'Size of the button',
+      table: {
+        defaultValue: {
+          summary: 'medium',
+        },
+      },
+    },
+    disabled: {
+      // adds disabled as control in Storybook
+      name: 'Disabled',
+      control: 'boolean',
+      description: 'Disables the button',
+      table: {
+        defaultValue: {
+          summary: 'false',
+        },
+      },
     },
   },
 };
